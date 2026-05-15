@@ -21,11 +21,11 @@ app.use(cors())
 app.use(express.json({ limit: '25mb' }))
 app.use(clerkMiddleware())
 
-app.get('/health', (_req, res) => {
+app.get(['/health', '/api/health'], (_req, res) => {
   res.json({ ok: true })
 })
 
-app.use('/version', versionRouter)
+app.use(['/version', '/api/version'], versionRouter)
 app.use('/api/boards', boardsRouter)
 app.use('/api/me', meRouter)
 

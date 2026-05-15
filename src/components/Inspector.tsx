@@ -10,11 +10,11 @@ type InspectorProps = {
 }
 
 const COLORS = [
-  { value: '#fff1a8', label: 'Yellow' },
-  { value: '#ffd6d6', label: 'Pink' },
-  { value: '#d8f3dc', label: 'Green' },
-  { value: '#d7e8ff', label: 'Blue' },
-  { value: '#f0ddff', label: 'Purple' },
+  { value: '#ffe566', label: 'Yellow' },
+  { value: '#ffadad', label: 'Pink' },
+  { value: '#96e6a8', label: 'Green' },
+  { value: '#99c2ff', label: 'Blue' },
+  { value: '#d499ff', label: 'Purple' },
 ]
 
 export function Inspector({

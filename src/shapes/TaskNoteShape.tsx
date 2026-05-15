@@ -4,7 +4,7 @@ import { useValue } from '@tldraw/state-react'
 import { HTMLContainer, Rectangle2d, ShapeUtil, T, resizeBox, type Editor, type TLResizeInfo } from 'tldraw'
 import type { TaskNoteShape } from '../types'
 
-const NOTE_COLORS = ['#fff1a8', '#ffd6d6', '#d8f3dc', '#d7e8ff', '#f0ddff']
+const NOTE_COLORS = ['#ffe566', '#ffadad', '#96e6a8', '#99c2ff', '#d499ff']
 
 export class TaskNoteShapeUtil extends ShapeUtil<TaskNoteShape> {
   static override type = 'task-note' as const

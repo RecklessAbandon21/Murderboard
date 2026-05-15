@@ -182,7 +182,7 @@ export function Sidebar({
         <div className="sidebar-section">
           <span className="sidebar-label">Note color</span>
           <div className="color-swatches" aria-label="Selected note color">
-            {['#fff1a8', '#ffd6d6', '#d8f3dc', '#d7e8ff', '#f0ddff'].map((color) => (
+            {['#ffe566', '#ffadad', '#96e6a8', '#99c2ff', '#d499ff'].map((color) => (
               <button
                 key={color}
                 className="color-swatch"

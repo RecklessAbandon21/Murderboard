@@ -210,10 +210,11 @@ function AppMockup() {
             <span className="mockup-save-pill">Saved</span>
             <span className="mockup-chip">Archive</span>
             <span className="mockup-icon-sq">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </span>
-            <span className="mockup-icon-sq">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 10V2M5 5l3-3 3 3M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="4" cy="8" r="1.25" fill="currentColor" />
+                <circle cx="8" cy="8" r="1.25" fill="currentColor" />
+                <circle cx="12" cy="8" r="1.25" fill="currentColor" />
+              </svg>
             </span>
             <span className="mockup-avatar" />
           </div>
@@ -242,7 +243,7 @@ function AppMockup() {
           </div>
           <div className="mockup-inspector-field mockup-inspector-field--tall" />
           <div className="mockup-inspector-colors">
-            {['#fff1a8','#ffd6d6','#d8f3dc','#d7e8ff','#f0ddff'].map(c => (
+            {['#ffe566','#ffadad','#96e6a8','#99c2ff','#d499ff'].map(c => (
               <span key={c} style={{ background: c }} />
             ))}
           </div>
@@ -255,30 +256,30 @@ function AppMockup() {
         </div>
 
         {/* Sticky notes */}
-        <div className="mockup-note" style={{ background: '#fff1a8', left: 192, top: 132 }}>
+        <div className="mockup-note" style={{ background: '#ffe566', left: 192, top: 132 }}>
           <strong>Ship v2 beta</strong>
           <span className="mockup-note-line" style={{ width: '80%' }} />
           <span className="mockup-note-line" style={{ width: '55%' }} />
         </div>
-        <div className="mockup-note" style={{ background: '#d7e8ff', left: 330, top: 116 }}>
+        <div className="mockup-note" style={{ background: '#99c2ff', left: 330, top: 116 }}>
           <strong>Review docs</strong>
           <span className="mockup-note-line" style={{ width: '70%' }} />
           <span className="mockup-note-line" style={{ width: '45%' }} />
         </div>
-        <div className="mockup-note" style={{ background: '#ffd6d6', left: 472, top: 158 }}>
+        <div className="mockup-note" style={{ background: '#ffadad', left: 472, top: 158 }}>
           <strong>Call vendor</strong>
           <span className="mockup-note-line" style={{ width: '75%' }} />
         </div>
-        <div className="mockup-note" style={{ background: '#d8f3dc', left: 600, top: 128 }}>
+        <div className="mockup-note" style={{ background: '#96e6a8', left: 600, top: 128 }}>
           <strong>Deploy staging</strong>
           <span className="mockup-note-line" style={{ width: '60%' }} />
           <span className="mockup-note-line" style={{ width: '40%' }} />
         </div>
-        <div className="mockup-note" style={{ background: '#f0ddff', left: 260, top: 272 }}>
+        <div className="mockup-note" style={{ background: '#d499ff', left: 260, top: 272 }}>
           <strong>Fix that bug</strong>
           <span className="mockup-note-line" style={{ width: '85%' }} />
         </div>
-        <div className="mockup-note" style={{ background: '#fff1a8', left: 410, top: 295 }}>
+        <div className="mockup-note" style={{ background: '#ffe566', left: 410, top: 295 }}>
           <strong>Team sync</strong>
           <span className="mockup-note-line" style={{ width: '65%' }} />
         </div>

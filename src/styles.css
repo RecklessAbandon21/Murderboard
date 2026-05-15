@@ -1241,10 +1241,96 @@ label {
     display: none;
   }
 
+  /* ── Inspector: bottom sheet on mobile ── */
   .inspector {
-    display: none;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    z-index: 100;
+    animation: inspector-slide-up 220ms ease;
   }
 
+  @keyframes inspector-slide-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+
+  .inspector-close {
+    width: 44px;
+    min-height: 44px;
+  }
+
+  .inspector-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 16px 28px;
+  }
+
+  .inspector-textarea {
+    grid-column: 1 / -1;
+    font-size: 16px;
+    min-height: 90px;
+    resize: none;
+  }
+
+  .inspector-input {
+    grid-column: 1 / -1;
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .inspector-colors {
+    grid-column: 1 / -1;
+    gap: 8px;
+  }
+
+  .inspector-color {
+    height: 44px;
+  }
+
+  .inspector-actions {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .inspector-btn {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+
+  /* ── Touch target sizes ── */
+  .dock-btn {
+    width: 44px;
+    min-height: 44px;
+  }
+
+  .mobile-drawer-close {
+    width: 44px;
+    min-height: 44px;
+  }
+
+  .mobile-drawer button,
+  .mobile-drawer label {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .search-nav button {
+    width: 44px;
+    min-height: 44px;
+  }
+
+  /* ── iOS font-size fixes (prevents auto-zoom on focus) ── */
+  .top-bar-search input {
+    font-size: 16px;
+  }
+
+  /* ── Layout ── */
   .floating-dock {
     top: auto;
     bottom: 80px;
@@ -1891,6 +1977,60 @@ label {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* More menu (⋯) */
+.top-bar-icon-btn--active {
+  background: rgba(255, 255, 255, 0.13);
+  color: var(--ink);
+}
+
+.top-bar-dropdown {
+  position: fixed;
+  z-index: 9999;
+  min-width: 172px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.top-bar-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 7px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 100ms, color 100ms;
+}
+
+.top-bar-dropdown-item svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.top-bar-dropdown-item input[type='file'] {
+  display: none;
+}
+
+.top-bar-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+}
+
+.top-bar-dropdown-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 4px 6px;
+}
+
 .landing-hero-logo {
   width: clamp(200px, 28vw, 340px);
   height: clamp(200px, 28vw, 340px);
@@ -2283,4 +2423,19 @@ label {
   color: rgba(255, 255, 255, 0.28);
   white-space: nowrap;
   pointer-events: none;
+}
+
+/* ── Touch-device overrides (pointer: coarse = finger, not mouse) ── */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Task-note action buttons: always fully opaque and larger on touch */
+  .task-note-actions {
+    opacity: 1;
+  }
+
+  .task-note-actions button {
+    width: 38px;
+    min-height: 38px;
+    border-radius: 12px;
+  }
 }

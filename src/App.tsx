@@ -453,7 +453,7 @@ export default function App() {
             updatedAt: now,
             completedAt: null,
             deletedAt: null,
-            color: '#fff1a8',
+            color: '#ffe566',
           },
         })
       })
@@ -760,6 +760,7 @@ export default function App() {
         onImportJson={importJson}
         onMobileMenuToggle={() => setDrawerOpen((open) => !open)}
         onRestartTour={() => void handleRestartTour()}
+        onGiveFeedback={() => window.open('mailto:feedback@murderboard.app', '_blank')}
       />
 
       {view === 'board' && (
@@ -981,6 +982,23 @@ export default function App() {
             }}
           />
         </label>
+        <div className="mobile-drawer-divider" />
+        <button
+          onClick={() => {
+            void handleRestartTour()
+            setDrawerOpen(false)
+          }}
+        >
+          Restart Tour
+        </button>
+        <button
+          onClick={() => {
+            window.open('mailto:feedback@murderboard.app', '_blank')
+            setDrawerOpen(false)
+          }}
+        >
+          Give Feedback
+        </button>
       </div>
 
       <BulkTaskModal
