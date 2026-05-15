@@ -11,7 +11,9 @@ normalize_repo_url() {
   echo "$url"
 }
 
-IMAGE="${IMAGE:-murderboard-backend}"
+REGISTRY="${REGISTRY:-registry.recklessabandon.dev}"
+IMAGE="${IMAGE:-${REGISTRY}/murderboard-backend}"
+DOCKER_PLATFORM="${DOCKER_PLATFORM:-linux/amd64}"
 PUSH="${PUSH:-false}"
 
 APP_VERSION=$(node -p "require('./package.json').version")
@@ -29,6 +31,7 @@ echo "  PUBLIC_REPO_URL  = ${PUBLIC_REPO_URL}"
 echo "  BUILD_TIMESTAMP  = ${BUILD_TIMESTAMP}"
 
 docker build \
+  --platform "${DOCKER_PLATFORM}" \
   --build-arg APP_VERSION="${APP_VERSION}" \
   --build-arg GIT_COMMIT_SHA="${GIT_COMMIT_SHA}" \
   --build-arg GIT_COMMIT_SHORT="${GIT_COMMIT_SHORT}" \
