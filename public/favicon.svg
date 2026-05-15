@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- corkboard background -->
+  <rect width="100" height="100" rx="18" fill="#c8923a"/>
+  <!-- board face -->
+  <path
+    d="M22 23 67 13l4 9 9 2 8 54-55 10-4-8-9 2-8-51 9-2Z"
+    fill="#ffd84a"
+    stroke="#2a1716"
+    stroke-width="5"
+    stroke-linejoin="round"
+  />
+  <!-- corner fold -->
+  <path d="m22 23 3 17-14-8" fill="#ffe675" stroke="#2a1716" stroke-width="4" stroke-linejoin="round" />
+  <!-- pinned lines -->
+  <path d="M39 37h31M42 48h23M37 60h29" stroke="#2a1716" stroke-width="4" stroke-linecap="round" />
+  <!-- knife blade -->
+  <path
+    d="M49 72 74 38l11 7-31 30Z"
+    fill="#d9e1e7"
+    stroke="#2a1716"
+    stroke-width="4"
+    stroke-linejoin="round"
+  />
+  <!-- blade glints -->
+  <path d="m69 44 8 5m-14 2 8 5" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".65" />
+  <!-- knife handle -->
+  <path
+    d="M75 34 91 12c4-5 12 0 8 7L87 44Z"
+    fill="#352322"
+    stroke="#2a1716"
+    stroke-width="5"
+    stroke-linejoin="round"
+  />
+  <circle cx="89" cy="21" r="3" fill="#cfd5d7" />
+  <circle cx="82" cy="32" r="3" fill="#cfd5d7" />
+</svg>
