@@ -166,7 +166,7 @@ export function LandingPage() {
             <span>Murderboard</span>
           </div>
           <div className="landing-footer-links">
-            <a href="mailto:jgutierrez2199@gmail.com" className="landing-footer-link">Contact</a>
+            <a href="mailto:hello@murderboard.dev" className="landing-footer-link">Contact</a>
           </div>
           <p className="landing-footer-copy">
             © {new Date().getFullYear()} Murderboard · Your to-do list had this coming
