@@ -8,6 +8,24 @@ RUN npm run build:server
 FROM node:24-alpine
 WORKDIR /app
 ENV NODE_ENV=production
+
+ARG APP_VERSION=dev
+ARG GIT_COMMIT_SHA=unknown
+ARG GIT_COMMIT_SHORT=unknown
+ARG PUBLIC_REPO_URL=
+ARG BUILD_TIMESTAMP=
+
+ENV APP_VERSION=$APP_VERSION
+ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
+ENV GIT_COMMIT_SHORT=$GIT_COMMIT_SHORT
+ENV PUBLIC_REPO_URL=$PUBLIC_REPO_URL
+ENV BUILD_TIMESTAMP=$BUILD_TIMESTAMP
+
+LABEL org.opencontainers.image.version=$APP_VERSION \
+      org.opencontainers.image.revision=$GIT_COMMIT_SHA \
+      org.opencontainers.image.source=$PUBLIC_REPO_URL \
+      org.opencontainers.image.created=$BUILD_TIMESTAMP
+
 COPY package*.json ./
 RUN npm ci --omit=dev
 COPY --from=build /app/dist-server ./dist-server

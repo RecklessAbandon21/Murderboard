@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import { clerkMiddleware } from '@clerk/express'
 import boardsRouter from './routes/boards.js'
 import meRouter from './routes/me.js'
+import versionRouter from './routes/version.js'
 import { runMigrations } from './migrations.js'
 
 dotenv.config()
@@ -24,6 +25,7 @@ app.get('/health', (_req, res) => {
   res.json({ ok: true })
 })
 
+app.use('/version', versionRouter)
 app.use('/api/boards', boardsRouter)
 app.use('/api/me', meRouter)
 

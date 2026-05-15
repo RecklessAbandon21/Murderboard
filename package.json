@@ -10,7 +10,9 @@
     "build:server": "tsc -p tsconfig.server.json",
     "preview": "vite preview --host 0.0.0.0",
     "start:server": "node dist-server/index.js",
-    "typecheck": "tsc -b && tsc -p tsconfig.server.json"
+    "typecheck": "tsc -b && tsc -p tsconfig.server.json",
+    "docker:build": "./scripts/docker-build.sh",
+    "docker:publish": "PUSH=true ./scripts/docker-build.sh"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.61.6",
