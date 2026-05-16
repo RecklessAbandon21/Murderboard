@@ -16,6 +16,7 @@ IMAGE="${IMAGE:-${REGISTRY}/murderboard-frontend}"
 DOCKER_PLATFORM="${DOCKER_PLATFORM:-linux/amd64}"
 PUSH="${PUSH:-false}"
 VITE_API_BASE_URL="${VITE_API_BASE_URL:-}"
+VITE_CLERK_PUBLISHABLE_KEY="${VITE_CLERK_PUBLISHABLE_KEY:-}"
 
 APP_VERSION=$(node -p "require('./package.json').version")
 GIT_COMMIT_SHA=$(git rev-parse HEAD)
@@ -30,11 +31,13 @@ echo "  GIT_COMMIT_SHA   = ${GIT_COMMIT_SHA}"
 echo "  GIT_COMMIT_SHORT = ${GIT_COMMIT_SHORT}"
 echo "  PUBLIC_REPO_URL  = ${PUBLIC_REPO_URL}"
 echo "  BUILD_TIMESTAMP  = ${BUILD_TIMESTAMP}"
-echo "  VITE_API_BASE_URL= ${VITE_API_BASE_URL}"
+echo "  VITE_API_BASE_URL          = ${VITE_API_BASE_URL}"
+echo "  VITE_CLERK_PUBLISHABLE_KEY = ${VITE_CLERK_PUBLISHABLE_KEY}"
 
 docker build \
   --platform "${DOCKER_PLATFORM}" \
   --build-arg VITE_API_BASE_URL="${VITE_API_BASE_URL}" \
+  --build-arg VITE_CLERK_PUBLISHABLE_KEY="${VITE_CLERK_PUBLISHABLE_KEY}" \
   -f Dockerfile.frontend \
   -t "${IMAGE}:${GIT_COMMIT_SHORT}" \
   -t "${IMAGE}:latest" \
