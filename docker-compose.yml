@@ -7,9 +7,15 @@ services:
       CLERK_SECRET_KEY: ${CLERK_SECRET_KEY:-}
       CLERK_PUBLISHABLE_KEY: ${CLERK_PUBLISHABLE_KEY:-}
       PORT: 4000
-    ports:
-      - "4000:4000"
 
+  # NOTE: The frontend image is built with Vite, which bakes env vars into the
+  # JS bundle at build time. These CANNOT be changed at runtime via docker-compose.
+  # Before running `make deploy`, ensure the following are set in your .env:
+  #
+  #   VITE_API_BASE_URL=http://<your-server-ip>:4000
+  #   VITE_CLERK_PUBLISHABLE_KEY=pk_...
+  #
+  # Run `make deploy` to rebuild and push the frontend image with those values.
   frontend:
     image: registry.recklessabandon.dev/murderboard-frontend:latest
     restart: unless-stopped

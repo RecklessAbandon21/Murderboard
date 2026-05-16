@@ -281,11 +281,17 @@ export default function App() {
 
       void (async () => {
         let didNormalize = false
+        let loadFailed = false
         try {
-          const boardId = activeBoardIdRef.current
-          if (!boardId) return
+          // Use activeBoardId directly from the closure rather than the ref: the ref is
+          // synced via a useEffect which runs after tldraw's useLayoutEffect that calls
+          // onMount, so the ref can be stale (null) on the initial mount.
+          if (!activeBoardId) {
+            loadingRef.current = false
+            return
+          }
 
-          const [{ snapshot }, archive] = await Promise.all([fetchBoard(boardId), fetchDoneTasks(boardId)])
+          const [{ snapshot }, archive] = await Promise.all([fetchBoard(activeBoardId), fetchDoneTasks(activeBoardId)])
           if (snapshot) {
             loadSnapshot(mountedEditor.store, snapshot as never)
             didNormalize = unlockCustomShapes(mountedEditor)
@@ -299,9 +305,15 @@ export default function App() {
         } catch (error) {
           console.error(error)
           setSaveState('error')
+          loadFailed = true
         } finally {
-          loadingRef.current = false
-          if (didNormalize) scheduleSave(mountedEditor)
+          // Only unlock saves if the load succeeded. If it failed, keeping
+          // loadingRef true prevents the store listener from saving an empty
+          // snapshot over the real board data.
+          if (!loadFailed) {
+            loadingRef.current = false
+            if (didNormalize) scheduleSave(mountedEditor)
+          }
         }
       })()
 
@@ -312,7 +324,7 @@ export default function App() {
 
       return cleanup
     },
-    [refreshSelectedShapeEditor, scheduleSave],
+    [activeBoardId, refreshSelectedShapeEditor, scheduleSave],
   )
 
   const switchBoard = useCallback(

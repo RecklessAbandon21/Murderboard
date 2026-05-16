@@ -11,6 +11,15 @@ normalize_repo_url() {
   echo "$url"
 }
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ENV_FILE="${SCRIPT_DIR}/../.env"
+if [[ -f "$ENV_FILE" ]]; then
+  set -o allexport
+  # shellcheck source=../.env
+  source "$ENV_FILE"
+  set +o allexport
+fi
+
 REGISTRY="${REGISTRY:-registry.recklessabandon.dev}"
 IMAGE="${IMAGE:-${REGISTRY}/murderboard-frontend}"
 DOCKER_PLATFORM="${DOCKER_PLATFORM:-linux/amd64}"
